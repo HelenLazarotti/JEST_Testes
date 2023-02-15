@@ -1,0 +1,153 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Cart Logout do Usuário should reset the cart when checkout() is called 1`] = `
+{
+  "items": [
+    {
+      "product": {
+        "price": 32,
+        "title": "Algicida Choque HTH",
+      },
+      "quantity": 2,
+    },
+    {
+      "product": {
+        "price": 25,
+        "title": "MaxFloc Clarifica HTH",
+      },
+      "quantity": 4,
+    },
+  ],
+  "total": 164,
+}
+`;
+
+exports[`Cart Logout do Usuário should return an object with the total and the list of items 1`] = `
+{
+  "items": [
+    {
+      "product": {
+        "price": 32,
+        "title": "Algicida Choque HTH",
+      },
+      "quantity": 2,
+    },
+    {
+      "product": {
+        "price": 25,
+        "title": "MaxFloc Clarifica HTH",
+      },
+      "quantity": 4,
+    },
+  ],
+  "total": 164,
+}
+`;
+
+exports[`Cart Logout do Usuário should return an object with the total and the list of items 2`] = `
+{
+  "items": [
+    {
+      "product": {
+        "price": 32,
+        "title": "Algicida Choque HTH",
+      },
+      "quantity": 2,
+    },
+    {
+      "product": {
+        "price": 25,
+        "title": "MaxFloc Clarifica HTH",
+      },
+      "quantity": 4,
+    },
+  ],
+  "total": 164,
+}
+`;
+
+exports[`Cart Logout do Usuário should return an object with the total and the list of items when sumary 1`] = `
+{
+  "items": [
+    {
+      "product": {
+        "price": 32,
+        "title": "Algicida Choque HTH",
+      },
+      "quantity": 2,
+    },
+    {
+      "product": {
+        "price": 25,
+        "title": "MaxFloc Clarifica HTH",
+      },
+      "quantity": 4,
+    },
+  ],
+  "total": 164,
+}
+`;
+
+exports[`Cart Logout do Usuário should return an object with the total and the list of items when sumary() is called 1`] = `
+{
+  "items": [
+    {
+      "product": {
+        "price": 32,
+        "title": "Algicida Choque HTH",
+      },
+      "quantity": 2,
+    },
+    {
+      "product": {
+        "price": 25,
+        "title": "MaxFloc Clarifica HTH",
+      },
+      "quantity": 4,
+    },
+  ],
+  "total": 164,
+}
+`;
+
+exports[`Cart Logout do Usuário should return an object with the total and the list of items: 
+{
+  "items": [
+    {
+      "product": {
+        "price": 32,
+        "title": "Algicida Choque HTH",
+      },
+      "quantity": 2,
+    },
+    {
+      "product": {
+        "price": 25,
+        "title": "MaxFloc Clarifica HTH",
+      },
+      "quantity": 4,
+    },
+  ],
+  "total": 164,
+}
+ 1`] = `
+{
+  "items": [
+    {
+      "product": {
+        "price": 32,
+        "title": "Algicida Choque HTH",
+      },
+      "quantity": 2,
+    },
+    {
+      "product": {
+        "price": 25,
+        "title": "MaxFloc Clarifica HTH",
+      },
+      "quantity": 4,
+    },
+  ],
+  "total": 164,
+}
+`;

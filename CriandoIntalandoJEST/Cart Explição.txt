@@ -1,0 +1,55 @@
+Vamos criar um carrinho de compras pra poder fazer testes...
+
+Usei uma biblioteca chamada Loadash:
+    - npm add loadash
+
+Link {https://lodash.com/docs/4.17.15}
+importer no arq. Cart.js
+
+Se vermos na docx, eles tem o loadash.nome do método, ex:
+    - >   _.remove(array, [predicate=_.identity])
+
+Aqui estamos do lado servidor, então podemos usar:
+    -  const _ = require('lodash')
+
+Mas nesse caso agr, usamos:
+    - const find = require('lodash/find')
+
+MAS se eu for usar em um projeto React, VueJS (front-end), é importante chamar apenas o método usado
+    - const find = require('lodash/find')
+
+
+Em um dos testes de checkou eu usei o método:
+//toMatchInlineSnapshot:
+Ele automaticamente coloca aquele JSON ali:
+        expect(cart.checkout()).toMatchInlineSnapshot(`
+{
+  "items": [
+    {
+      "product": {
+        "price": 32,
+        "title": "Algicida Choque HTH",
+      },
+      "quantity": 2,
+    },
+    {
+      "product": {
+        "price": 25,
+        "title": "MaxFloc Clarifica HTH",
+      },
+      "quantity": 4,
+    },
+  ],
+  "total": 164,
+}
+`)
+
+Mas imagina que eu tenha milhares de dados, isso se torna inviável, então posso usar o método:
+    - expect(cart.checkout()).toMatchSnapshot()
+
+Ele vai criar uma pasta pra mim com o json que poluiria minha tela, o nome da pasta: 
+    - _snapshots_
+Do arq é o mesmo que o de teste:
+    - Cart.test.ks.snap
+
+{PAREI AULA MÓDULO1-19}
