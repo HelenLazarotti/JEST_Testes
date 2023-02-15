@@ -1,0 +1,66 @@
+Dou o comando:
+    -{npm init -y}
+Pra instalar as dependencias pra mim.
+
+Depois instalo o JEST, pelo terminal:
+    - npm install --save-dev jest
+    - npm add jest @types/jest
+
+No terminal coloco o comando, pra nao precisar ficar rodando toda vida um 'npm test', então p fazer automático:
+    - npm test --watchAll
+
+Ai no arq {package.json}, preciso por: {
+    "scripts": {
+        "test": "jest",
+        "test:watch": "jest --watchAll"
+      },
+}
+
+Agora no terminal rodo: {npm run watch ou npm run test:watch}
+
+Funcionooou, ele vai me dar umas opções, onde eu:
+
+Se for um sistema enorme como meu trabalho, que tem 500 testes, rodar all, vai ser muito demorado e anti performático, então eu dou o comando, para que ele rode apenas o que eu alterei/recém criei dou enter.
+
+Ao invés de usar test, posso usar:
+    - test('deve me retornar um erro', () => {
+        expect(sum(2, 2)).toBe(4);
+    })
+
+    USO:
+    - it('deve me retornar um erro', () => {
+        expect(sum(2, 2)).toBe(4);
+    })
+    OU:
+    - describe()
+
+Restante, da 1° aula, está explicado nos arq -> sum.js e sum.test.js
+
+Aula2: são os arquivos:
+    /queryString.js
+    /queryString.test.js
+
+aula2 module.exports.queryString = (obj) => {
+    //quero entradas a partir do meu objeto
+    //console.log(Object.entries(obj))
+    //me retorna um array:
+    // [ [ 'name', 'Helen' ], [ 'profession', 'QA' ] ]
+
+    //se eu quiser procurar cada item do array:
+    const entries = Object.entries(obj).map(item => {
+        //console.log(item)
+        return `${item[0]}=${item[1]}`
+        //retorna:
+        /*name=Helen&profession=QA */
+    })
+    //retorna: 
+    // [ 'name', 'Helen' ]
+    // [ 'profession', 'QA' ]
+
+    console.log(entries.join('&'))
+    return entries.join('&')
+};
+
+Posso usar um comando para gerar RELATÓRIOS:
+    - npm test --coverage
+{NÃO FUNCIONOUUUUUUUUUU}
