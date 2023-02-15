@@ -7,11 +7,12 @@ describe('Object to query string', () => {
     test('should create a valid string when an object is provided', () => {
         const obj = {
             name: 'Helen',
-            profession: 'QA'
+            profession: 'QA',
+            age: '21'
         };
 
         //digo oque eu espero que venha:
-        expect(queryString(obj)).toBe('name=Helen&profession=QA')
+        expect(queryString(obj)).toBe('name=Helen&profession=QA&age=21')
     })
 
     //Vamos tornar a codificação mais resiliente:
@@ -45,6 +46,14 @@ describe('Object to query string', () => {
         }).toThrowError();
     })
 })
+
+
+
+
+
+
+
+
 
 //TRANSFORMA QUERY STRING PARA OBJETO
 describe('Query string to object', () => {

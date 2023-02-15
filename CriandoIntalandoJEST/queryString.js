@@ -3,12 +3,11 @@ module.exports.queryString = (obj) => {
     //se eu quiser procurar cada item do array:
     const entries = Object.entries(obj).map(item => {
        
-        return `${item[0]}=${item[1]}`
+        return `${item[0]}=${item[1]}=${item[2]}`
         //retorna:
         /*name=Helen&profession=QA */
     })
 
-   // console.log(entries.join('&'))
     return entries.join('&')
     //se eu colocar no lugar do & um * ou qualquer outra coisa, retorna erro, pq lá no test, espero que me retorne um array com o &
 };

@@ -64,3 +64,6 @@ aula2 module.exports.queryString = (obj) => {
 Posso usar um comando para gerar RELATÓRIOS:
     - npm test --coverage
 {NÃO FUNCIONOUUUUUUUUUU}
+
+Bom link explicando JEST: 
+     -https://www.devmedia.com.br/teste-unitario-com-jest/41234
