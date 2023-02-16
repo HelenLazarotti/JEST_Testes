@@ -20,14 +20,13 @@ beforeAll(() => {
     cart = new Cart();
 })
 
-
 describe('Cart Total de Produtos', () => {
 
     //TESTE 
     //deve retornar 0 quando getTotal() for executado em uma instância recém-criada
     test('should return 0 when getTotal() is executed in a newly created instance', () => {
         //espero que esse meu carrinho pegue o total, e seja 0:
-        expect(cart.getTotal()).toEqual(0);
+        expect(cart.getTotal().getAmount()).toEqual(0);
     });
 
     //TESTE
@@ -43,9 +42,8 @@ describe('Cart Total de Produtos', () => {
         cart.add(item)
 
         //espero que pegue tot e seja 832
-        expect(cart.getTotal()).toBe(512)
+        expect(cart.getTotal().getAmount()).toBe(512)
 
-        console.log(item)//só p ver
     })
 
     //TESTE
@@ -67,7 +65,7 @@ describe('Cart Total de Produtos', () => {
         });
 
         //espero que o total seja apenas valor de 1
-        expect(cart.getTotal()).toBe(512)
+        expect(cart.getTotal().getAmount()).toBe(512)
     })
 
     //TESTE
@@ -90,7 +88,7 @@ describe('Cart Total de Produtos', () => {
         //removi o Algicida Choque
         cart.remove(product);
 
-        expect(cart.getTotal()).toBe(375)
+        expect(cart.getTotal().getAmount()).toBe(375)
     })
 });
 
@@ -132,7 +130,7 @@ describe('Cart Logout do Usuário', () => {
         expect(cart.sumary()).toMatchSnapshot()
 
         //uso esse método indicando que não me interessa qual for o resultado, eu QUERO que seja MAIOR QUE 0:
-        expect(cart.getTotal()).toBeGreaterThan(0)
+        expect(cart.getTotal().getAmount()).toBeGreaterThan(0)
         
     })
 
@@ -147,6 +145,66 @@ describe('Cart Logout do Usuário', () => {
         cart.checkout()//faço logout
 
         //espero que pegue o total e esse total seja 0
-        expect(cart.getTotal()).toBe(0)
+        expect(cart.getTotal().getAmount()).toBe(0)
+    })
+})
+
+describe('Condições Especiais', () => {
+    
+    //TESTE
+    //deve aplicar a quantidade de desconto percentual acima do mínimo passado
+    test('should apply percentage discount quantity above minium passed', () => {
+         
+        //obj p 30% desconto, p quando passar de dois
+        const condition = {
+            porcentage: 30,
+            minimun: 2
+        }
+
+        //add algo no car
+        cart.add({
+            product,
+            condition,
+            quantity: 3
+        })
+
+        //espero
+        expect(cart.getTotal().getAmount()).toBe(96)
+    })
+
+    //TESTE
+    //deve aplicar desconto de quantidade para adicionar quantidades
+    test('should apply quantity discount for add quantities', () => {
+        const condition = {
+            quantity: 2
+        }
+
+        cart.add({
+            product,
+            condition,
+            quantity: 5
+        })
+
+        //espero
+        expect(cart.getTotal().getAmount()).toBe(160)
+    })
+
+
+    //TESTE
+    //NÃO deve aplicar a quantidade de desconto percentual se está abaixo ou igual ao mínimo
+    test('should NOT apply percentage discount quantity is below or equals minimum', () => {
+        const condition = {
+            percentage: 30,
+            minimun: 2
+        }
+
+        cart.add({
+            product,
+            condition,
+            quantity: 2
+        })
+
+        //espero
+        expect(cart.getTotal().getAmount()).toBe(64)
     })
 })

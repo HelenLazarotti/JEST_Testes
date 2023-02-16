@@ -52,4 +52,7 @@ Ele vai criar uma pasta pra mim com o json que poluiria minha tela, o nome da pa
 Do arq é o mesmo que o de teste:
     - Cart.test.ks.snap
 
-{PAREI AULA MÓDULO1-19}
+  
+  
+Baixei uma biblioteca pra dinheiro -> Dinero:
+  - npm install dinero.js

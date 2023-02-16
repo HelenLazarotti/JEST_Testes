@@ -1,5 +1,35 @@
 const find = require('lodash/find')
 const remove = require('lodash/remove')
+const Dinero = require('dinero.js')
+const { attempt } = require('lodash')
+
+const calculatePercentageDiscount = (amount, item) => {
+    //se meu item tiver condição, % e qtde MAIOR q o míninmo, aplica desconto:
+    if(item.condition?.percentage && item.quantity > item.condition.minimun) {
+                    
+        discount = amount.percentage(item.condition.percentage)
+    }
+
+    return Money({ amount: 0})
+}
+
+const calculateQuantityDiscount = (amount, item)  => {
+
+    //preciso ver se é par
+    const isEven = item.quantity % 2 === 0;
+
+    if(item.condition?.quantity && item.quantity > item.condition.quantity) {
+        return amount.percentage(isEven ? 50 : 40)
+    }
+
+    return Money ({ amount: 0 })
+
+}
+
+//da biblioteca dinero.js
+const Money = Dinero;
+Money.defaultCurrency = 'BRL'
+Money.defaultPrecision = 2
 
 class Cart {
 
@@ -29,19 +59,21 @@ class Cart {
 
     getTotal() {
         //qnd tenho um array e quero calcular um n° int que depende de cada elemento do array, usamos REDUCE
-
-        //REDUCE passa como 1° param: o 0 ali, seguindo um loop, assim usamos o acc(accumulator)
         return this.items.reduce((acc, item) => {
+            
+            //valor atual mais a quantidade dos produtos * o preço dos produtos:
+            const amount = Money({amount: item.quantity * item.product.price})
 
-            //retorno valor atual mais a quantidade dos produtos * o preço dos produtos:
-            return acc + item.quantity * item.product.price
+            const discount = calculatePercentageDiscount( amount, item)
+            
+            return acc.add(amount).subtract(discount)
 
-        }, 0)//valor inicial será 0
+        }, Money({ amount: 0}))//valor inicial será 0
     }
 
     //método para somar
     sumary() {
-        const total =  this.getTotal()//pego $tot
+        const total =  this.getTotal().getAmount()//pego $tot
         const items = this.items//e itens do array
 
         return {
